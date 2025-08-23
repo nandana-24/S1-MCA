@@ -45,20 +45,20 @@ void deleteAtBeginning(){
 }
 void deleteAtEnd(){
     struct node *ptr=head;
-    while(ptr->next!=NULL){
+    while(ptr->next->next!=NULL){
         ptr=ptr->next;
     }
-    printf("Deleted element: %d\n",ptr->data);
+    printf("Deleted element: %d\n",ptr->next->data);
     ptr->next=NULL;
 }
 void deleteAtMiddle(int p){
     struct node *ptr=head;
-    struct node *temp=head;
-    for(int i=0;i<p-1;i++){
+    for(int i=1;i<p-1;i++){
         ptr=ptr->next;
-        temp=temp->next;
     }
-    ptr->next=temp->next->next;
+    struct node *temp=ptr->next;
+    printf("Deleted element: %d\n",temp->data);
+    ptr->next=temp->next;
 }
 void display(){
     struct node *ptr=head;
@@ -74,7 +74,7 @@ int main()
     insertAtEnd(39);
     insertAtMiddle(78,2);
     display();
-    //deleteAtBeginning();
+    deleteAtBeginning();
     deleteAtEnd();
     deleteAtMiddle(2);
     display();
