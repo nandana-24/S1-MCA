@@ -2,7 +2,7 @@
 #include<stdlib.h>
 struct node{
     int data;
-    struct node *next;
+    struct node *next;//self referential pointer
 };
 struct node *head=NULL;
 struct node * createNode(int v){
@@ -29,10 +29,23 @@ void insertAtEnd(int v){
     }
     ptr->next=new;
 }
+// void insertAtMiddle(int v,int p){
+//     struct node* new=createNode(v);
+//     struct node *ptr=head;
+//     int i;
+//     for(i=1;i<p-1;i++){
+//         ptr=ptr->next;
+//     }
+//     new->next=ptr->next;
+//     ptr->next=new;
+// }
 void insertAtMiddle(int v,int p){
     struct node* new=createNode(v);
     struct node *ptr=head;
-    for(int i=1;i<p-1;i++){
+    if(p==1&&head==NULL){
+        insertAtBeginning(v);
+    }
+    for(int i=1;i<p-1&&ptr!=NULL;i++){
         ptr=ptr->next;
     }
     new->next=ptr->next;
@@ -60,6 +73,23 @@ void deleteAtMiddle(int p){
     printf("Deleted element: %d\n",temp->data);
     ptr->next=temp->next;
 }
+void search(int val){
+    struct node *ptr=head;
+    int flag=0;
+    for(int i=1;ptr!=NULL;i++){
+        if(val==ptr->data){
+            printf("Element found at %d th position\n",i);
+            flag=1;
+            break;
+        }
+        else{
+            ptr=ptr->next;
+        }
+    }
+        if(flag==0){
+            printf("Element not found\n");
+        }
+    }
 void display(){
     struct node *ptr=head;
     while(ptr!=NULL){
@@ -73,10 +103,14 @@ int main()
     insertAtBeginning(20);
     insertAtEnd(39);
     insertAtMiddle(78,2);
+    insertAtMiddle(67,4);
     display();
     deleteAtBeginning();
     deleteAtEnd();
     deleteAtMiddle(2);
     display();
+    search(2);
+    search(78);
+    search(39);
     return 0;
 }
