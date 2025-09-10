@@ -1,0 +1,27 @@
+a{
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            color: blue;
+        }
+        .client{
+            min-height:200px;
+            border:10px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        td{
+                text-align: center;
+                height:50px;
+                font-size: 20px;
+        }
+        #http{
+            border: solid;
+            padding: 5px;
+            margin-right: 20px;
+        }
+        h3{
+            font-family: cursive;
+        }

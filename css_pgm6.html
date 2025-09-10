@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container
+            {
+                width: 500px;
+                height:auto;
+                border: solid;
+                margin:20px;
+                display: flex;
+            }
+        #bcd{
+            background-color:beige;
+        }
+        .img{
+            padding-left:30px;
+            padding-right: 10px;
+        }
+        li{
+            font-size: large;
+        }
+        .section {
+      flex: 1; /* divide equally */
+      height: 120px;
+      border: solid;
+      display: flex;
+      margin:20px;
+      overflow-y: scroll;
+    }
+    .box {
+      flex: 1; /* divide equally */
+      border: solid;
+      display: flex;
+      margin:20px;
+    }
+    .container1{
+        display: flex;
+    }
+    .box{
+        display: grid;
+        grid-template-columns: 1 fr 1 fr 1 fr;
+        gap:20px;
+        background-color: bisque;
+        /*border:dashed 1 px;*/
+    }
+    .type{
+        border: dashed;
+        flex: 1; /* divide equally */
+      height: 120px;
+      display: flex;
+      margin:20px;
+    }
+    </style>
+    <link href="external.css" rel="stylesheet">
+</head>
+<body id="bcd">
+    <h1 align="center">WELCOME TO THE WORLD OF CSS!!</h1>
+    <img src="css.png" alt="css" width="95%" height="400px" class="img">
+    <div class="container1">
+        <div class="container">
+        <h4 style="color:black;padding-left:15px;font-size: larger;">About CSS</h4>
+        <ul>
+        <li>Control various visual aspects such as colors,
+spacing,typography,borders and layout</li>
+        <li>Accept different types of values, including 
+keywords,numerical values with units and functions</li>
+        <li>Many related properties can be combined into a 
+single shorthand property for conciseness</li>
+        <li>Modern CSS includes logical properties that 
+define layout based on writing modes</li>
+    </ul>
+    </div>
+    <div class="section">
+        <h4 style="color:black;padding-left:15px;font-size: larger;">Properties of CSS</h4>
+        <p>
+            <ul>
+                <li>
+                    text-align
+                </li>
+                <li>vertical-align</li>
+                <li>line-height</li>
+                <li>letter-spacing</li>
+                <li>word-spacing</li>
+                <li>color</li>
+                <li>background-color</li>
+                <li>display:flex</li>
+                <li>margin</li>
+                <li>padding</li>
+            </ul>
+        </p>
+    </div>
+    </div>
+    <div class="container1">
+        <div class="box">
+            <h4 style="color:black;padding-left:15px;font-size: larger;">Inline CSS</h4>
+            <p>Inline CSS refers to the method of applying Cascading Style Sheet (CSS) rules directly to individual HTML elements using the style attribute within the element's opening tag. </p>
+            <pre>Eg: &lth4 style="color:black;
+                padding-left:15px;
+                font-size: larger;" &gt Inline CSS &lt/h4 &gt</pre>
+        </div>
+        <div class="box">
+            <h4 style="color:black;padding-left:15px;font-size: larger;">Internal CSS</h4>
+            <p>Internal CSS, also known as embedded CSS, is a method of applying styles directly within a single HTML document. It involves placing CSS rules within a &ltstyle&gt element.
+        </p>Eg: &ltstyle&gt<br>
+        <pre>
+        .img{
+            padding-left:30px;
+            padding-right: 10px;
+        }
+        </pre>
+        &lt/style&gt
+        </div>
+        <div class="box">
+            <h4 style="color:black;padding-left:15px;font-size: larger;">External CSS</h4>
+            <p>External CSS refers to a method of applying styles to HTML documents by linking a separate CSS file to the HTML. This approach separates the presentation (CSS) from the content (HTML)</p>
+            <pre>
+                h1{
+    color:brown;
+    background-color: bisque;
+}
+li{
+    color:brown;
+}
+<br>
+&ltlink href="external.css" rel="stylesheet"&gt
+            </pre>
+        </div>
+    </div>
+    
+</body>
+</html>
