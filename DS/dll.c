@@ -37,7 +37,16 @@ void insertAtEnd(int v){
         new->prev=ptr;
 }
 }
-
+void insertAtMiddle(int v,int p){
+    struct node *new=createNode(v);
+    struct node *ptr=head;
+    for(int i=0;i<p-1&&ptr!=NULL;i++){
+        ptr=ptr->next;
+    }
+    new->next=ptr->next;
+    ptr->next=new;
+    new->prev=ptr;
+}
 void display(){
     struct node *ptr=head;
     while(ptr!=NULL){
@@ -49,6 +58,7 @@ int main(){
     insertAtEnd(10);
     insertAtBeginning(20);
     insertAtBeginning(30);
+    insertAtMiddle(45,3);
     display();
     return 0;
 } 
