@@ -1,0 +1,37 @@
+ <h1 id="a"></h1>
+    <button onclick="abc()">Click me!</button><br>
+    Enter first number: <input type="text" id="n1">
+    Enter second number: <input type="text" id="n2">
+    <p id="res"></p>
+    <p id="z">Hello</p>
+    <button onclick="sum()">Click for sum</button><br>
+    <button onclick="red()">Red</button>
+    <button onclick="blue()">Blue</button>
+    <button onclick="green()">Green</button>
+    <script>
+        let x=10;
+            let y=5;
+            let z=x+y;
+            content=document.getElementById("a");
+            function sum(){
+                let a=parseInt(document.getElementById("n1").value);
+                let b=parseInt(document.getElementById("n2").value);
+                let r=a+b;
+                document.getElementById("res").innerHTML=r;
+            }
+            
+        function abc(){
+            content.innerHTML=z;
+        }
+        function red(){
+            document.getElementById("z").style.color="red";
+        }
+        function blue(){
+            document.getElementById("z").style.color="blue";
+        }
+        function green(){
+            document.getElementById("z").style.color="green";
+        }
+        let name=prompt("enter name:");
+        alert("Welcome "+name);
+    </script>
