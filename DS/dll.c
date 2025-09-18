@@ -64,6 +64,17 @@ void insertAtMiddle(int v,int p){
         head=ptr->next;
         free(ptr);
     }
+void deleteAtEnd(){
+    if(head==NULL){
+            printf("Can't delete from beginning. List is empty\n");
+        }
+        struct node *ptr=head;
+        while(ptr->next->next!=NULL){
+            ptr=ptr->next;
+        }
+        free(ptr->next);
+        ptr->next=NULL;
+}
 void display(){
     struct node *ptr=head;
     if(ptr==NULL){
@@ -87,10 +98,10 @@ int main()
         printf("1 : display \n");
         printf("2 : Insert at Beginning \n");
         printf("3 : Insert at End \n");
-                printf("4 : delete at begining \n");
-                        printf("5 : delete at end \n");
-        printf("6 : insert at pos \n");
-                printf("7 : delete at pos \n");
+        printf("4 : insert at pos \n");
+        printf("5 : delete at begining \n");
+        printf("6 : delete at end \n");
+        printf("7 : delete at pos \n");
                                
 
 
@@ -123,15 +134,14 @@ int main()
             scanf("%d",&p);
             insertAtMiddle(v,p);
             break;
-        /*case 7:
-            deleteAtPos();
-            break;*/
-
+        case 7:
+            deleteAtEnd();
+            break;
        
         default:
+        
             break;
-        }
-
+        }while(choice<8)
     }
     
     return 0;
