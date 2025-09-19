@@ -91,6 +91,23 @@ void deleteAtPos(){
     printf("Deleted data: %d",temp->data);
     free(temp);
 }
+void search(int val){
+    struct node *ptr=head;
+    int flag=0;
+    for(int i=0;ptr!=NULL;i++){
+        if(val==ptr->data){
+            printf("Element found at %d th position\n",i);
+            flag=1;
+            break;
+        }
+        else{
+            ptr=ptr->next;
+        }
+    }
+        if(flag==0){
+            printf("Element not found\n");
+        }
+    }
 void display(){
     struct node *ptr=head;
     if(ptr==NULL){
@@ -118,8 +135,8 @@ int main()
         printf("5 : delete at begining \n");
         printf("6 : delete at end \n");
         printf("7 : delete at pos \n");
-                               
-
+        printf("8 : Search an element \n");                               
+        printf("9 : Exit \n");
 
         scanf("%d",&choice);
         switch (choice)
@@ -153,10 +170,14 @@ int main()
         case 7:
             deleteAtPos();
             break;
+        case 8:
+        printf("Enter the element to be searched: ");
+            scanf("%d",&p);
+            search(p);
         default:
         
             break;
         }
-    }while(choice<8);
+    }while(choice<9);
     return 0;
 }
