@@ -62,6 +62,7 @@ void insertAtMiddle(int v,int p){
 
         ptr->next->prev=NULL;
         head=ptr->next;
+        printf("Deleted data: %d",ptr->data);
         free(ptr);
     }
 void deleteAtEnd(){
@@ -72,8 +73,23 @@ void deleteAtEnd(){
         while(ptr->next->next!=NULL){
             ptr=ptr->next;
         }
+        printf("Deleted data: %d",ptr->next->data);
         free(ptr->next);
         ptr->next=NULL;
+}
+void deleteAtPos(){
+    int p;
+    printf("Enter the position to be deleted: ");
+    scanf("%d",&p);
+    struct node *ptr=head;
+    for(int i=0;i<p-1;i++){
+        ptr=ptr->next;
+    }
+    struct node *temp=ptr->next;
+    ptr->next=ptr->next->next;
+    ptr->next->prev=ptr;
+    printf("Deleted data: %d",temp->data);
+    free(temp);
 }
 void display(){
     struct node *ptr=head;
@@ -92,7 +108,7 @@ int main()
     int choice=1;
     int v;
     int p;
-    while (choice)
+    do
     {
         printf("\nDOUBLY LINKED LIST OPERATIONS \n");
         printf("1 : display \n");
@@ -122,27 +138,25 @@ int main()
             insertAtEnd(v);
             break;
         case 4:
-            deleteAtBeginning();
-            break;
-        /*case 5:
-            deleteA();
-            break;*/
-        case 6:
             printf("enter the value to be inserted");
             scanf("%d",&v);
             printf("enter the position to be inserted");
             scanf("%d",&p);
             insertAtMiddle(v,p);
             break;
-        case 7:
+        case 5:
+            deleteAtBeginning();
+            break;
+        case 6:
             deleteAtEnd();
             break;
-       
+        case 7:
+            deleteAtPos();
+            break;
         default:
         
             break;
-        }while(choice<8)
-    }
-    
+        }
+    }while(choice<8);
     return 0;
 }
