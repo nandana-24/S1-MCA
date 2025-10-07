@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="tom.jpg" id="image">
+    <p id="text">Hi Tom!!!!</p>
+    <script>
+        const img=document.getElementById("image");
+        const text=document.getElementById("text");
+        img.addEventListener("mouseover",mouseIn);
+        function mouseIn(){
+            img.src="pokemon.jpg";
+            text.textContent="Pokemon";
+        }
+        img.addEventListener("mouseout",mouseOut);
+        function mouseOut(){
+            img.src="dore.jpg";
+            text.textContent="doreamon";
+            text.style.color="blue";
+        }
+    </script>
+</body>
+</html>

@@ -99,18 +99,65 @@ void display(){
 }
 int main()
 {
-    insertAtBeginning(10);
-    insertAtBeginning(20);
-    insertAtEnd(39);
-    insertAtMiddle(78,2);
-    insertAtMiddle(67,4);
-    display();
-    deleteAtBeginning();
-    deleteAtEnd();
-    deleteAtMiddle(2);
-    display();
-    search(2);
-    search(78);
-    search(39);
+    int choice=1;
+    int v;
+    int p;
+    do
+    {
+        printf("\nDOUBLY LINKED LIST OPERATIONS \n");
+        printf("1 : display \n");
+        printf("2 : Insert at Beginning \n");
+        printf("3 : Insert at End \n");
+        printf("4 : insert at pos \n");
+        printf("5 : delete at begining \n");
+        printf("6 : delete at end \n");
+        printf("7 : delete at middle \n");
+        printf("8 : Search an element \n");
+        printf("9 : Exit \n");
+
+
+        scanf("%d",&choice);
+        switch (choice)
+        {
+        case 1:
+            display();
+            break;
+        case 2:
+            printf("enter the value to be inserted");
+            scanf("%d",&v);
+            insertAtBeginning(v);
+            break;
+        case 3:
+            printf("enter the value to be inserted");
+            scanf("%d",&v);
+            insertAtEnd(v);
+            break;
+        case 4:
+            printf("enter the value to be inserted");
+            scanf("%d",&v);
+            printf("enter the position to be inserted");
+            scanf("%d",&p);
+            insertAtMiddle(v,p);
+            break;
+        case 5:
+            deleteAtBeginning();
+            break;
+        case 6:
+            deleteAtEnd();
+            break;
+        case 7:
+            printf("Enter the position to be deleted: ");
+            scanf("%d",&p);
+            deleteAtMiddle(p);
+            break;
+        case 8:
+            printf("Enter the element to be searched: ");
+            scanf("%d",&p);
+            search(p);
+        default:
+        
+            break;
+        }
+    }while(choice<9);
     return 0;
 }

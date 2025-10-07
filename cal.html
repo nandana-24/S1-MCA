@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar Generator</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      font-family: monospace;
+    }
+    caption {
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 4px 8px;
+      width: 40px;
+      height: 30px;
+      text-align: right;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Calendar Generator</h2>
+  <input id="yearInput" type="number" placeholder="Enter year">
+  <button onclick="genCal()">Generate</button>
+
+  <div id="out"></div>
+
+  <script>
+    function genCal() {
+      const y = parseInt(document.getElementById("yearInput").value);
+      if (isNaN(y) || y < 1) return alert("Enter a valid year (e.g., 2025)");
+
+      const out = document.getElementById("out");
+      out.innerHTML = ""; // Clear previous
+
+      const mNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+      for (let m = 0; m < 12; m++) {
+        const table = document.createElement("table");
+
+        // Add caption: e.g., Jan 2025
+        const caption = document.createElement("caption");
+        caption.textContent = `${mNames[m]} ${y}`;
+        table.appendChild(caption);
+
+        // Create header row (Sun to Sat)
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
+        daysOfWeek.forEach(day => {
+          const th = document.createElement("th");
+          th.textContent = day;
+          headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        // Generate days
+        const tbody = document.createElement("tbody");
+        const firstDay = new Date(y, m, 1).getDay();
+        const totalDays = new Date(y, m + 1, 0).getDate();
+
+        let row = document.createElement("tr");
+
+        // Empty cells before the first day
+        for (let i = 0; i < firstDay; i++) {
+          row.appendChild(document.createElement("td"));
+        }
+
+        for (let d = 1; d <= totalDays; d++) {
+          const td = document.createElement("td");
+          td.textContent = d;
+          row.appendChild(td);
+
+          // If row is full or last day, start new row
+          if ((firstDay + d) % 7 === 0 || d === totalDays) {
+            tbody.appendChild(row);
+            row = document.createElement("tr");
+          }
+        }
+
+        table.appendChild(tbody);
+        out.appendChild(table);
+      }
+    }
+  </script>
+
+</body>
+</html>
