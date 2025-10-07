@@ -23,7 +23,7 @@ void enqueue(int val){
     }
 }
 void dequeue(){
-    if(rear==NULL){
+    if(front==NULL){
         printf("Queue is empty\n");
     }
     else if(front->next==NULL){
@@ -45,7 +45,7 @@ void display(){
         return;
     }
     while(ptr!=NULL){
-        printf("Elements are:%d\n",ptr->data);
+        printf("%d\n",ptr->data);
         ptr=ptr->next;
     }
 }
