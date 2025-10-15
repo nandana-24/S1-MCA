@@ -2,4 +2,4 @@ def gcd(x,y):
     while(y!=0):
         x,y=y,x%y
     return x
-print(gcd(121,11))
+print(gcd(11,121))

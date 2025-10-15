@@ -1,3 +1,11 @@
 a=input("enter a string: ")
-for i in a:
+freq = {}
+
+for c in a:
+    if c in freq:
+        freq[c] += 1
+    else:
+        freq[c] = 1
+
+print(freq)
     
