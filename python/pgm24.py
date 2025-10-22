@@ -14,9 +14,6 @@ class Bank:
     def check_amount(self):
         print("Balance: ",self.balance)
 cust1=Bank()
-'''cust1.deposit(2000)
-cust1.withdrawal(5000)
-cust1.check_amount()'''
 while True:
     n=input("enter 1 for deposit, 2 for withdrawal, 3 to check balance, 4 to exit. enter your choice: ")
     if n=='1':
