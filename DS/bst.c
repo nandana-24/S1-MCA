@@ -6,7 +6,7 @@ struct node
     struct node *rchild;
     struct node *lchild;
 };
-struct node *root=NULL,*new,*ptr1;
+struct node *root=NULL,*new;
 struct node *createnode(int n)
 {   
     new=(struct node*)malloc(sizeof(struct node));
@@ -18,9 +18,12 @@ struct node *createnode(int n)
 void insert(int n)
 {
     struct node *ptr=root;
+    struct node *ptr1=root;
+    new=createnode(n);   
+
     if(root==NULL)
     {
-        root=createnode(10);
+        root=new;
     }
     while(ptr!=NULL)
     {
@@ -38,17 +41,35 @@ void insert(int n)
         {
             printf("data exists");
         }
-    }
-    if(ptr==NULL)
+         if(ptr==NULL)
     {
-        ptr=createnode(20);
-        if(ptr->data<ptr1->data)
+        if(new->data<ptr1->data)
         {
-            ptr=ptr1->lchild;
+            ptr1->lchild=new;
         }
         else
         {
-            ptr=ptr1->rchild;
+            ptr1->rchild=new;
         }
     }
+    }
+
+}
+void preorder(struct node* root) 
+{
+    if (root != NULL) {
+        printf("%d ", root->data);
+        preorder(root->lchild);
+        preorder(root->rchild);
+    }
+}
+int main() {
+
+    insert(30);
+    insert(70);
+    insert(20);
+    insert(40);
+    insert(60);
+    insert(80);
+    preorder(root);
 }
