@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-color: #B6D0E2; /* Light Blue */
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <marquee scrollamount="20" style="color:red" onmouseover="this.stop()" onmouseout="this.start()">
+            WELCOME TO FRESHER'S WORLD!!!
+        </marquee>
+    </h1>
+    
+    <table border="2px" align="center" style="background-color: #F0FFFF;">
+        <form onsubmit=" myFunction(event)">
+            <tr height="70px">
+                <th colspan="4" style="font-size: 27px;">Registration Form</th>
+            </tr>
+            <tr>
+                <th align="left">Name</th>
+                <td colspan="2"><input type="text" id="name"><p style="color:red;" id="abcd"></p></td>
+            </tr>
+            <tr>
+                <th align="left">Age</th>
+                <td colspan="3"><input type="text" id="bcd"><p style="color:red;" id="bcde"></p></td>
+            </tr>
+            <tr>
+                <th align="left">Password</th>
+                <td colspan="3"><input type="password" id="pass"></td>
+            </tr>
+            <tr>
+                <th align="left">Re-enter Password</th>
+                <td colspan="3"><input type="password" id="repass"></td>
+            </tr>
+            <tr>
+                <th align="left" rowspan="4">Select Your Security Question</th>
+                <td colspan="3"><input type="radio" name="abc" id="q1" value="pet_name">What is your pet name?</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="radio" name="abc" id="q2" value="best_friend">Who is your Bestfriend?</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="radio" name="abc" id="q3" value="fav_color">What is your favourite colour?</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="radio" name="abc" id="q4" value="fav_teacher">Who is your favourite teacher?</td>
+            </tr>
+            <tr>
+                <th align="left">Answer of security question</th>
+                <td colspan="3"><input type="password"></td>
+            </tr>
+            <tr>
+                <th align="left">E-mail ID</th>
+                <td colspan="3"><input type="email"></td>
+            </tr>
+            <tr>
+                <th align="left">Languages known</th>
+                <td colspan="3">
+                    <input type="checkbox">English
+                    <input type="checkbox"> Malayalam
+                    <input type="checkbox">Hindi
+                    <input type="checkbox">Others
+                </td>
+            </tr>
+            <tr>
+                <th align="left" rowspan="2">Phone number</th>
+                <th style="background-color:#6F8FAF;">Home</th>
+                <th colspan="2" style="background-color:#6F8FAF;">Office</th>
+            </tr>
+            <tr>
+                <td align="center"><input type="number"></td>
+                <td align="center" colspan="2"><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Upload CV</th>
+                <td colspan="3"><input type="file"></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="reset"></td>
+                <td align="center" colspan="3">
+                    <button type="submit">submit</button>
+                </td>
+            </tr>
+        </form>
+    </table>
+<script>
+    function myFunction(event) {
+    event.preventDefault(); 
+
+    // Clear all previous error messages
+    document.querySelectorAll("p[id^='req_']").forEach(p => p.innerHTML = "");
+
+    let isValid = true; // flag to track overall validity
+
+    // Validate name
+    let nameInput = document.getElementById("name").value.trim();
+    if (nameInput === "") {
+        document.getElementById("abcd").innerHTML = "Name can't be empty";
+        isValid = false;
+    } else if (!isNaN(nameInput)) {
+        document.getElementById("abcd").innerHTML = "Name can't be a number";
+        isValid = false;
+    }
+
+    // Validate age
+    let age = document.getElementById("bcd").value.trim();
+    if (age === "") {
+        document.getElementById("bcde").innerHTML = "Invalid age";
+        isValid = false;
+    } else if (age < 18) {
+        document.getElementById("bcde").innerHTML = "Age can't be less than 18";
+        isValid = false;
+    }
+
+    // If all validations pass, you can proceed
+    if (isValid) {
+        alert("Form submitted successfully!");
+        // you can now submit the form manually or process it
+    }
+}
+
+</script>
+</body>
+</html>
