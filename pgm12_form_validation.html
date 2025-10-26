@@ -119,36 +119,15 @@
             document.getElementById("val_phnoff").innerHTML="Enter 10 digits";
         }
         if(phn_ho.length!=10){
+            event.preventDefault();
             document.getElementById("val_phnho").innerHTML="Enter 10 digits";
         }
         if(name!='[a-z,A-Z]'){
+            event.preventDefault();
             document.getElementById("abcd").innerHTML="enter letters only";
         }
     }
 </script>
-<!--/*event.preventDefault(); 
-
-    // Clear all previous error messages
-    document.querySelectorAll("p[id^='req_']").forEach(p => p.innerHTML = "");
-
-    let isValid = true; // flag to track overall validity
-
-    // Validate name
-    let nameInput = document.getElementById("name").value.trim();
-    if (nameInput === "") {
-        document.getElementById("abcd").innerHTML = "Name can't be empty";
-        isValid = false;
-    } else if (!isNaN(nameInput)) {
-        document.getElementById("abcd").innerHTML = "Name can't be a number";
-        isValid = false;
-    }
-
-    // Validate age
-    let age = document.getElementById("bcd").value.trim();
-    if (age === "") {
-        document.getElementById("bcde").innerHTML = "Invalid age";
-        isValid = false;-->
-
 </body>
 </html>
 
