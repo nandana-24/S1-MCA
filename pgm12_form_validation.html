@@ -109,6 +109,9 @@
             event.preventDefault();
             document.getElementById("bcde").innerHTML="Age should be greater than 18";
         }
+        if(!pass.match(/^[A-Za-z0-9]+$/)){
+            document.getElementById("val_pas").innerHTML="Enter correct format";
+        }
         if(pass!=repas){
             event.preventDefault();
             document.getElementById("val_pas").innerHTML="Password should match";
