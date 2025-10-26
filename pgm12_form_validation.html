@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <th align="left">E-mail ID</th>
-                <td colspan="3"><input type="email" id="email"></td>
+                <td colspan="3"><input type="text" id="email"><p style="color:red;" id="val_email"></p></td>
             </tr>
             <tr>
                 <th align="left">Languages known</th>
@@ -128,6 +128,9 @@
         if(name!='[a-z,A-Z]'){
             event.preventDefault();
             document.getElementById("abcd").innerHTML="enter letters only";
+        }
+        if(!email.match('^[\w\.-]+@[\w\.-]+\.\w{2,}$')){
+            document.getElementById("val_email").innerHTML="enter valid email";
         }
     }
 </script>
