@@ -32,32 +32,32 @@
             </tr>
             <tr>
                 <th align="left">Password</th>
-                <td colspan="3"><input type="password" id="pass"></td>
+                <td colspan="3"><input type="password" id="pass"><p style="color:red;" id="val_pas"></p></td>
             </tr>
             <tr>
                 <th align="left">Re-enter Password</th>
-                <td colspan="3"><input type="password" id="repass"></td>
+                <td colspan="3"><input type="password" id="repass"><p style="color:red;" id="val_repas"></p></td>
             </tr>
             <tr>
                 <th align="left" rowspan="4">Select Your Security Question</th>
-                <td colspan="3"><input type="radio" name="abc" id="q1" value="pet_name">What is your pet name?</td>
+                <td colspan="3"><input type="radio" name="abc" id="q1" value="pet_name" required>What is your pet name?</td>
             </tr>
             <tr>
-                <td colspan="3"><input type="radio" name="abc" id="q2" value="best_friend">Who is your Bestfriend?</td>
+                <td colspan="3"><input type="radio" name="abc" id="q2" value="best_friend" required>Who is your Bestfriend?</td>
             </tr>
             <tr>
-                <td colspan="3"><input type="radio" name="abc" id="q3" value="fav_color">What is your favourite colour?</td>
+                <td colspan="3"><input type="radio" name="abc" id="q3" value="fav_color" required>What is your favourite colour?</td>
             </tr>
             <tr>
-                <td colspan="3"><input type="radio" name="abc" id="q4" value="fav_teacher">Who is your favourite teacher?</td>
+                <td colspan="3"><input type="radio" name="abc" id="q4" value="fav_teacher" required>Who is your favourite teacher?</td>
             </tr>
             <tr>
                 <th align="left">Answer of security question</th>
-                <td colspan="3"><input type="password"></td>
+                <td colspan="3"><input type="password" id="ans"></td>
             </tr>
             <tr>
                 <th align="left">E-mail ID</th>
-                <td colspan="3"><input type="email"></td>
+                <td colspan="3"><input type="email" id="email"></td>
             </tr>
             <tr>
                 <th align="left">Languages known</th>
@@ -74,12 +74,12 @@
                 <th colspan="2" style="background-color:#6F8FAF;">Office</th>
             </tr>
             <tr>
-                <td align="center"><input type="number"></td>
-                <td align="center" colspan="2"><input type="text"></td>
+                <td align="center"><input type="number" id="phn_ho"><p style="color:red;" id="val_phnho"></p></td>
+                <td align="center" colspan="2"><input type="number" id="phn_off"><p style="color:red;" id="val_phnoff"></p></td>
             </tr>
             <tr>
                 <th>Upload CV</th>
-                <td colspan="3"><input type="file"></td>
+                <td colspan="3"><input type="file" id="file"></td>
             </tr>
             <tr>
                 <td align="center"><input type="reset"></td>
@@ -91,7 +91,42 @@
     </table>
 <script>
     function myFunction(event) {
-    event.preventDefault(); 
+        let name=document.getElementById("name").value;
+        let age=document.getElementById("bcd").value;
+        let pass=document.getElementById("pass").value;
+        let repas=document.getElementById("repass").value;
+        let ans=document.getElementById("ans").value;
+        let email=document.getElementById("email").value;
+        let phn_ho=document.getElementById("phn_ho").value;
+        let phn_off=document.getElementById("phn_off").value;
+        let file=document.getElementById("file").value;
+
+        if((name=="") || (age=="") || (pass=="") || (repas=="") || (ans=="") || (email=="") || (phn_ho=="") || (phn_off=="") || (file==" ")){
+            event.preventDefault();
+            alert("Fill all required fields");
+        }
+        if(age<18){
+            event.preventDefault();
+            document.getElementById("bcde").innerHTML="Age should be greater than 18";
+        }
+        if(pass!=repas){
+            event.preventDefault();
+            document.getElementById("val_pas").innerHTML="Password should match";
+            document.getElementById("val_repas").innerHTML="Password should match";
+        }
+        if(phn_off.length!=10){
+            event.preventDefault();
+            document.getElementById("val_phnoff").innerHTML="Enter 10 digits";
+        }
+        if(phn_ho.length!=10){
+            document.getElementById("val_phnho").innerHTML="Enter 10 digits";
+        }
+        if(name!='[a-z,A-Z]'){
+            document.getElementById("abcd").innerHTML="enter letters only";
+        }
+    }
+</script>
+<!--/*event.preventDefault(); 
 
     // Clear all previous error messages
     document.querySelectorAll("p[id^='req_']").forEach(p => p.innerHTML = "");
@@ -112,19 +147,12 @@
     let age = document.getElementById("bcd").value.trim();
     if (age === "") {
         document.getElementById("bcde").innerHTML = "Invalid age";
-        isValid = false;
-    } else if (age < 18) {
-        document.getElementById("bcde").innerHTML = "Age can't be less than 18";
-        isValid = false;
-    }
+        isValid = false;-->
 
-    // If all validations pass, you can proceed
-    if (isValid) {
-        alert("Form submitted successfully!");
-        // you can now submit the form manually or process it
-    }
-}
-
-</script>
 </body>
 </html>
+
+
+
+
+
