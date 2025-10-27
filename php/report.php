@@ -1,16 +1,45 @@
-<form action="card.php" method="post">
-    Name : <input type="text" name="name"><br><br>
-    Age : <input type="number" name="age"><br><br>
-    Roll No : <input type="number" name="roll"><br><br>
-    Gender : <input type="radio" name="abc" value="Male">Male
-    <input type="radio" name="abc" value="Female">Female<br><br>
-    Mark 1 : <input type="number" id="m1" name="M1"><br><br>
-    Mark 2 : <input type="number" id="m2" name="M2"><br><br>
-    Mark 3 : <input type="number" id="m3" name="M3"><br><br>
-    <button onclick="totalll()">Calculate Total</button><br><br>
-    Total : <input type="text" id="ctotal" name="total"><br><br>
-    <input type="submit">
-    <input type="reset">
+<table>
+    <form action="card.php" method="post">
+    <tr>
+        <th height=50>Name :</th>
+        <td><input type="text" name="name"></td>
+    </tr>
+    <tr>
+        <th height=50>Age :</th>
+        <td><input type="text" name="age"></td>
+    </tr>
+    <tr>
+        <th height=50>Roll No :</th>
+        <td><input type="text" name="roll"></td>
+    </tr>
+    <tr>
+        <th height=50>Gender :</th>
+        <td><input type="radio" name="abc" value="Male">Male
+    <input type="radio" name="abc" value="Female">Female</td>
+    </tr>
+    <tr>
+        <th height=50>Mark 1 :</th>
+        <td><input type="number" id="m1" name="M1"></td>
+    </tr>
+    <tr>
+        <th height=50>Mark 2 :</th>
+        <td><input type="number" id="m2" name="M2"></td>
+    </tr>
+    <tr>
+        <th height=50>Mark 3 :</th>
+        <td><input type="number" id="m3" name="M3"></td>
+    </tr>
+     <tr>
+        <th height=50><button onclick="totalll()" style="margin-left: 70px;">Calculate Total</button></th>
+    </tr>
+    <tr>
+        <th height=50>Total Marks :</th>
+        <td><input type="text" id="ctotal" name="total"></td>
+    </tr>
+     <tr>
+        <th height=50><input type="submit" ><input type="reset"></th>
+    </tr>
+  
     <script>
     function totalll(){
         event.preventDefault();
@@ -23,3 +52,4 @@
     }
     </script>
 </form>
+</table>
