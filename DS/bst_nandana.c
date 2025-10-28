@@ -52,20 +52,19 @@ void insert(){
         }
     }
 }
-struct node * successor(struct node *ptr){
+/*struct node * successor(struct node *ptr){
     struct node *ptr1=NULL;
     ptr1=ptr->right;
     if(ptr1!=NULL){
         while(ptr1->left!=NULL){
             ptr1=ptr1->left;
         }
-    printf("%d",ptr1->data);
     }
     else{
         printf("No inorder successor");
     }
     return ptr1;
-    }
+    }*/
 void delete(){
     int flag=0;
     struct node *ptr=root;
@@ -95,16 +94,49 @@ void delete(){
                 if(ptr1->left==ptr){
                     ptr1->left=NULL;
                 }
+                else if(ptr1==NULL){
+                    root=NULL;
+                }
                 else{
                     ptr1->right=NULL;
                 }
+                free(ptr);
             }
             else if(ptr->left!=NULL && ptr->right !=NULL){
-                struct node *temp=successor(ptr);
-                int newd=temp->data;
-                delete(temp);
-                ptr->data=newd;
+                struct node *succParent = ptr;
+                struct node *succ = ptr->right;
+
+        while (succ->left != NULL) {
+            succParent = succ;
+            succ = succ->left;
+        }
+
+        // Copy successor's data to current node
+        ptr->data = succ->data;
+
+        // Delete successor node
+        if (succParent->left == succ)
+            succParent->left = succ->right;
+        else
+            succParent->right = succ->right;
+
+        free(succ);
                 
+            }
+            else{
+                if(ptr->left!=NULL && ptr1->left==ptr){
+                    ptr1->left=ptr->left;
+                }
+                else if(ptr->left!=NULL && ptr1->right==ptr){
+                    ptr1->right=ptr->left;
+                }
+                else if(ptr->right!=NULL && ptr1->right==ptr){
+                    ptr1->right=ptr->right;
+                }
+                else{
+                    ptr1->left=ptr->right;
+                }
+                free(ptr);
             }
 }
 void inorder(struct node *root){
@@ -130,7 +162,7 @@ void postorder(struct node *root){
 }
 int main(){
     int n,ch;
-    printf("enter 1 to insert, 2 to delete and 3 to exit. enter your choice");
+    printf("enter 1 to insert, 2 to delete and 3 to exit. enter your choice: ");
     scanf("%d",&ch);
     switch(ch){
         case 1:
@@ -152,7 +184,7 @@ int main(){
     postorder(root);
     printf("\n");
     case 2:
-    successor(root);
+    //successor(root);
     delete();
     printf("\nInorder Traversal:\n");
     inorder(root);
