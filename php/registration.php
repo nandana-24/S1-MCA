@@ -1,28 +1,40 @@
 <html>
     <head></head>
     <body>
-        <form action="regis.php" method="post">
+        <form action="registration.php" method="post">
         <h2>Registration form</h2>
-        Name<br>
-        <input type="text" name="name"><br>
         Roll no<br>
         <input type="number" name="roll"><br>
-        Gender<br>
-        <input type="radio" name="abc" value="male">Male
-        <input type="radio" name="abc" value="female">Female<br>
-        E-mail<br>
-        <input type="email" name="email"><br>
-        Mark 1<br>
-        <input type="number" name="m1"><br>
-        Mark 2<br>
-        <input type="number" name="m2"><br>
-        <input type="submit">
+        Name<br>
+        <input type="text" name="name"><br>
+        Address<br>
+        <input type="text" name="addr"><br>
+        Phone number<br>
+        <input type="number" name="phn"><br>
+        Username<br>
+        <input type="text" name="uname"><br>
+        Password<br>
+        <input type="password" name="pass"><br>
+        Re-Type password<br>
+        <input type="password" name="repass"><br>
+        <input type="submit" name="submit">
         <input type="reset">
         </form>
+        <?php
+        include("example.php");
+            if(isset($_POST['submit'])){
+                $name=$_POST['name'];
+                $roll=$_POST['roll'];
+                $addr=$_POST['addr'];
+                $phn=$_POST['phn'];
+                $uname=$_POST['uname'];
+                $pass=$_POST['pass'];
+                $repass=$_POST['repass'];
+                $sql="INSERT into login values('$roll','$name','$addr','$phn','$uname','$pass')";
+                if(mysqli_query($conn,$sql)){
+                    echo "<script>alert('Updated!');</script>";
+                }
+            }
+        ?>
     </body>
 </html>
-<!-- <script>
-    function func(){
-
-    }
-</script> -->
