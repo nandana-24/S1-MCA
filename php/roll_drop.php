@@ -14,9 +14,7 @@
         echo "<br><br>";
         echo "<input type='submit' name='search' value='Search'><br><br>";
         if(isset($_POST['search'])){
-            
-        }
-        $roll=$_POST['rolll'];
+            $roll=$_POST['rolll'];
         $query1="SELECT * from student where Roll_No='$roll'";
         $res=mysqli_query($conn,$query1);
         if(mysqli_num_rows($res)>0){
@@ -25,15 +23,22 @@
                  echo "Name: ".$row['Name']."<br><br>";
                  echo "Mark1"."<input type='text' name='m1' value=".$row['Mark_1']."><br><br>";
                 echo "Mark2"."<input type='text' name='m2' value=".$row['Mark_2']."><br><br>";
+                echo "<input type='hidden' name='rol' value='".$row['Roll_No']."'>";
+                echo "<input type='submit' name='update' value='Update'><br><br>";
             }
         }
-        $mark1=$_POST['m1'];
+        }
+        if(isset($_POST['update'])){
+            $roll=$_POST['rol'];
+            $mark1=$_POST['m1'];
         $mark2=$_POST['m2'];
-        $sql1="UPDATE student set Mark_1='$mark1' where Roll_No='$roll'";
-        $sql2="UPDATE student set Mark_2='$mark2' where Roll_No='$roll'";
+        $sql1="UPDATE student set Mark_1='$mark1',Mark_2='$mark2' where Roll_No='$roll'";
+        //$sql2="UPDATE student set Mark_2='$mark2' where Roll_No='$roll'";
         $res1=mysqli_query($conn,$sql1);
-        $res2=mysqli_query($conn,$sql2);
-        echo "<input type='submit' value='Update'><br><br>";
+        //$res2=mysqli_query($conn,$sql2);
+        }
+        
+        
         echo "<input type='reset'>";
         echo "</form>";
     ?>
