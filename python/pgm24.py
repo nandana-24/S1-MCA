@@ -10,7 +10,7 @@ class Bank:
             print("Insufficient funds")
         else:
             self.balance-=am
-            print("Amount withdrawed")
+            print("Amount withdrawn")
     def check_amount(self):
         print("Balance: ",self.balance)
 cust1=Bank()
@@ -20,7 +20,7 @@ while True:
         amount=int(input("enter the amount to deposit: ").strip())
         cust1.deposit(amount)
     elif n=='2':
-        amo=int(input("enter the amount to be withdrawed: ").strip())
+        amo=int(input("enter the amount to be withdrawn: ").strip())
         cust1.withdrawal(amo)
     elif n=='3':
         cust1.check_amount()
