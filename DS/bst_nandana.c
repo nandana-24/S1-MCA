@@ -121,7 +121,6 @@ void delete(){
             succParent->right = succ->right;
 
         free(succ);
-                
             }
             else{
                 if(ptr->left!=NULL && ptr1->left==ptr){
