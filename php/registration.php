@@ -30,10 +30,20 @@
                 $uname=$_POST['uname'];
                 $pass=$_POST['pass'];
                 $repass=$_POST['repass'];
+                $qr="SELECT * from login where roll_no='$roll'";
+                $result=mysqli_query($conn,$qr);
+                if(mysqli_num_rows($result)>0){
+                    echo "<script>alert('roll no already exists');</script>";
+                }
+                else if($pass!=$repass){
+                    echo "<script>alert('password doesnt match');</script>";
+                }
+                else{
                 $sql="INSERT into login values('$roll','$name','$addr','$phn','$uname','$pass')";
                 if(mysqli_query($conn,$sql)){
                     echo "<script>alert('Updated!');</script>";
                 }
+            }
             }
         ?>
     </body>
