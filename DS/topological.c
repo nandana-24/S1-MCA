@@ -18,12 +18,12 @@ int main(){
     }
     int flag=0;
     while(count<n){
-        cycle=0;
+        cycle=1;//to detect cycle
     for(i=0;i<n;i++){
         flag=0;
         if(visited[i]==0){
         for(j=0;j<n;j++){
-            if(graph[j][i]==1)
+            if(graph[j][i]==1)//indegree checking
             {
                 flag=1;
                 break;
@@ -33,14 +33,14 @@ int main(){
             printf("%d\t",i);
             visited[i]=1;
             count++;
-            cycle=1;
+            cycle=0;
             for(k=0;k<n;k++){
                 graph[i][k]=0;
             }
         }
     }
     }
-    if(!cycle){
+    if(cycle){
         printf("\ncycle detected");
         break;
     }
